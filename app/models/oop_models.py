@@ -21,3 +21,5 @@ class User(BaseEntity):
         self.hostel_id = hostel_id
         self.id = User.id_counter
         User.id_counter += 1
+    def getUserInfo(self):
+        return f"User: {self.name}, Hostel: {self.hostel_id}, Room: {self.room}, Role: {self.role}"
