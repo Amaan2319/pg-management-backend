@@ -1,3 +1,6 @@
+import datetime
+
+
 class BaseEntity:
     def __init__(self):
         pass
@@ -23,3 +26,13 @@ class User(BaseEntity):
         User.id_counter += 1
     def getUserInfo(self):
         return f"User: {self.name}, Hostel: {self.hostel_id}, Room: {self.room}, Role: {self.role}"
+
+def wrapper(func):
+    def inner():
+        print("function started at: ",datetime.now())
+        func(**args, **kwargs)
+        print("Function finished execution at:", datetime.now())
+        return func
+    return inner
+
+
