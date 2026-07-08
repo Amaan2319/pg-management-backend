@@ -26,13 +26,19 @@ class User(BaseEntity):
         User.id_counter += 1
     def getUserInfo(self):
         return f"User: {self.name}, Hostel: {self.hostel_id}, Room: {self.room}, Role: {self.role}"
+    
+    @property
+    def email(self):
+        return self._email
+    
+    @email.setter
+    def email(self, value):
+        if "@" not in value:
+            raise ValueError("Invalid email address")
+        self._email = value
 
-def wrapper(func):
-    def inner():
-        print("function started at: ",datetime.now())
-        func(**args, **kwargs)
-        print("Function finished execution at:", datetime.now())
-        return func
-    return inner
+amaan = User("Amaan", "amaan@example.com", "Room 101", 1, "student")
+
+print(amaan.email)
 
 
